@@ -39,6 +39,16 @@ export const GlobalStyle = createGlobalStyle`
         -webkit-font-smoothing: antialised;
     }
 
+    //* Font family and weight configuration.
+    body, input, textarea, button {
+        font-weight: 400;
+        font-family: 'Poppins', sans-serif;
+    }
+
+    h1, h2, h3, h4, h5, h6, strong {
+        font-weight: 600;
+    }
+
     button {
         cursor: pointer;
     }
