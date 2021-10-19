@@ -59,4 +59,43 @@ export const GlobalStyle = createGlobalStyle`
     opacity: .6;
     cursor: not-allowed; 
   }
+
+  // ? Modal Styles
+  .modal-close {
+    position: absolute;
+
+    top: 1.5rem;
+    right: 1.5rem;
+
+    border: 0;
+    background: transparent;
+
+    transition: filter .2s;
+
+    &:hover {
+      filter: brightness(.8);
+    }
+  }
+
+  .modal-content {
+    position: relative;
+    
+    width: 100%;
+    padding: 3rem;
+    max-width: 576px;
+
+    border-radius: .25rem;
+    background: var(--background);
+  }
+
+  .modal-overlay {
+    inset: 0;
+    position: fixed;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: rgba(0,0,0,.5);
+  }
 `;
