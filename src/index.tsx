@@ -1,48 +1,45 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { createServer } from 'miragejs';
+import { createServer, Model } from 'miragejs';
 
 import { App } from './App';
 
 createServer({
+  models: { transaction: Model, },  
+
+  seeds(server) {
+    server.db.loadData({
+      transactions: [ 
+        { 
+          id: 1,
+          title: 'Desenvolvimento de WebSite',
+          value: 3000,
+          type: 'deposit',
+          category: 'Freela',
+          createdAt: new Date('2021-10-04'),
+        },
+        {
+          id: 2,
+          title: 'Tênis de Corrida',
+          value: 300,
+          type: 'withdraw',
+          category: 'Compras',
+          createdAt: new Date('2021-10-15'),
+        }
+      ],
+    })
+  },
+  
   routes() {
     this.namespace = 'api';
 
     this.get('/transactions', () => {
-      return [
-        {
-          id: 1,
-          amount: 10000,
-          type: 'deposit',
-          category: 'Freela',
-          creatAt: new Date(2021, 10, 20),
-          title: 'Desenvolvimento de WebSite',
-        },
-        {
-          id: 2,
-          amount: 2000,
-          type: 'deposit',
-          title: 'Salário',
-          category: 'Emprego',
-          creatAt: new Date(2021, 11, 5),
-        },
-        {
-          id: 3,
-          amount: 200,
-          type: 'withdraw',
-          title: 'Internet',
-          category: 'Contas',
-          creatAt: new Date(2021, 11, 10),
-        },
-        {
-          id: 4,
-          amount: 80,
-          type: 'withdraw',
-          title: 'Academia',
-          category: 'Contas',
-          creatAt: new Date(2021, 11, 26),
-        },
-      ];
+      return this.schema.all('transaction');
+    });
+
+    this.post('/transactions', (schema, request) => {
+      const data = JSON.parse(request.requestBody);
+      return schema.create('transaction', data);
     });
   }
 });
