@@ -4,7 +4,7 @@ import outcomeImg from '../../assets/outcome.svg';
 
 import { Container } from "./styles";
 
-export function Summary() {
+export const Summary: React.FC = () => {
   return (
     <Container>
       <div>

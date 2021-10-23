@@ -6,7 +6,7 @@ interface HeaderProps {
   onOpenNewTransactionModal: () => void;
 }
 
-export function Header({ onOpenNewTransactionModal } : HeaderProps) {
+export const Header: React.FC<HeaderProps> = ({ onOpenNewTransactionModal }) => {
   return (
     <Container>
       <Content>

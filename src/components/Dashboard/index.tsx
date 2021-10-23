@@ -3,7 +3,7 @@ import { TransactionTable } from "../TransactionsTable";
 
 import { Container } from "./styles";
 
-export function Dashboard() {
+export const Dashboard: React.FC = () => {
   return (
     <Container>
       <Summary />
