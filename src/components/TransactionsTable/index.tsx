@@ -1,4 +1,6 @@
-import { useTransactions } from '../../TransactionsContext';
+import formatDate from '../../utils/formatDate';
+import formatMoney from '../../utils/formatMoney';
+import { useTransactions } from '../../hooks/useTransactions';
 
 import { Container } from './styles';
 
@@ -21,14 +23,9 @@ export const TransactionTable: React.FC = () => {
           {transactions.map((transaction) => (
             <tr key={transaction.id}>
               <td>{transaction.title}</td>
-              <td className={transaction.type}>
-                {new Intl.NumberFormat('pt-BR', {
-                  style: 'currency',
-                  currency: 'BRL'
-                }).format(transaction.value)}
-              </td>
+              <td className={transaction.type}>{formatMoney(transaction.value)}</td>
               <td>{transaction.category}</td>
-              <td>{new Intl.DateTimeFormat('pt-BR').format(new Date(transaction.createdAt))}</td>
+              <td>{formatDate(transaction.createdAt)}</td>
             </tr>
           ))}
         </tbody>

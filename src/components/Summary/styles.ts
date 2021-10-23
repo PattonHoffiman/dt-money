@@ -32,7 +32,14 @@ export const Container = styled.div`
 
     &.hightlight {
       color: white;
-      background: var(--green);
+      
+      &.red {
+        background: var(--red);
+      }
+
+      &.green {
+        background: var(--green);
+      }
     }
   }
 `;

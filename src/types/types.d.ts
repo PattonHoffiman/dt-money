@@ -6,3 +6,5 @@ declare type Transaction  = {
   category: string;
   type: 'deposit' | 'withdraw';
 };
+
+declare type TransactionFormData = Omit<Transaction, 'id' | 'createdAt'>;
